@@ -1,6 +1,6 @@
 services:
   apt-cacher-ng:
-    image: mrjncsk/apt-cacher-ng:latest
+    image: ghcr.io/mrjncsk/apt-cacher-ng:latest
     container_name: apt-cacher-ng
     ports:
       - "3142:3142"

@@ -22,7 +22,12 @@ jobs:
         chmod +x smart-build.sh
         ./smart-build.sh
 
+    - name: Push Docker image to GitHub Container Registry
+      run: |
+        docker tag apt-cacher-ng ghcr.io/mrjncsk/apt-cacher-ng:latest
+        docker push ghcr.io/mrjncsk/apt-cacher-ng:latest
+
     - name: Deploy Docker container
       run: |
         docker-compose up -d
-      if: github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/main'

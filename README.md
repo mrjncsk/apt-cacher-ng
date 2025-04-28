@@ -11,13 +11,13 @@ docker run -d \
   -p 3142:3142 \
   -v ./apt-cache:/var/cache/apt-cacher-ng \
   -v ./apt-config:/etc/apt-cacher-ng \
-  mrjncsk/apt-cacher-ng:latest
+  ghcr.io/mrjncsk/apt-cacher-ng:latest
 ```
 ## Compose
 ```yml
 services:
   apt-cacher-ng:
-    image: mrjncsk/apt-cacher-ng:latest
+    image: ghcr.io/mrjncsk/apt-cacher-ng:latest
     container_name: apt-cacher-ng
     ports:
       - "3142:3142"
