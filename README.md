@@ -25,4 +25,5 @@ services:
     restart: unless-stopped
 ```
 ## Apt Cacher Infos
-https://wiki.debian.org/AptCacherNg
+- https://www.unix-ag.uni-kl.de/~bloch/acng/
+- https://wiki.debian.org/AptCacherNg
