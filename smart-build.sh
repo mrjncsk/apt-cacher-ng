@@ -25,3 +25,11 @@ echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }
 
 docker push $IMAGE_NAME:$BUILD_TAG
 docker push $IMAGE_NAME:latest
+
+
+
+
+
+
+
+

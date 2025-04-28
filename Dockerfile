@@ -13,3 +13,12 @@ RUN test -d /etc/apt-cacher-ng || (echo "Missing config dir!" && exit 1)
 EXPOSE 3142
 
 CMD ["apt-cacher-ng", "-foreground"]
+
+
+
+
+
+
+
+
+
