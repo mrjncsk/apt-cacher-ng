@@ -5,5 +5,5 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 EXPOSE 3142
-ENTRYPOINT ["/usr/sbin/apt-cacher-ng", "-N", "-c", "/etc/apt-cacher-ng"]
+ENTRYPOINT ["/usr/sbin/apt-cacher-ng", "-c", "/etc/apt-cacher-ng"]
 CMD ["foreground=1"]
