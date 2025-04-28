@@ -7,9 +7,9 @@ CURRENT_DIGEST=$(docker inspect --format='{{index .RepoDigests 0}}' $BASE_IMAGE)
 if [ -f "$DIGEST_FILE" ]; then
     LAST_DIGEST=$(cat "$DIGEST_FILE")
     if [ "$CURRENT_DIGEST" == "$LAST_DIGEST" ]; then
-        echo "Basis-Image hat sich NICHT verändert."
+        echo "Image not changed."
         exit 0
     fi
 fi
 echo "$CURRENT_DIGEST" > "$DIGEST_FILE"
-docker build -t my-apt-cacher-ng .
+docker build -t apt-cacher-ng .
