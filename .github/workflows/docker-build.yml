@@ -5,8 +5,8 @@ on:
     branches:
       - main
   schedule:
-    - cron: '6 6 * * 6'
-  workflow_dispatch:
+    - cron: '6 6 * * 6'  # Läuft jeden Samstag um 6:06 Uhr UTC
+  workflow_dispatch:  # Manuelle Auslösung via GitHub UI
 
 jobs:
   build:
@@ -30,11 +30,3 @@ jobs:
       run: |
         chmod +x smart-build.sh
         ./smart-build.sh
-
-    - name: Tag Docker image
-      run: |
-        docker tag apt-cacher-ng ghcr.io/mrjncsk/apt-cacher-ng:latest
-
-    - name: Push Docker image
-      run: |
-        docker push ghcr.io/mrjncsk/apt-cacher-ng:latest
