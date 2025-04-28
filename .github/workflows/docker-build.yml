@@ -5,8 +5,8 @@ on:
     branches:
       - main
   schedule:
-    - cron: '6 6 * * 6'  # jeden Samstag um 06:06 Uhr UTC
-  workflow_dispatch:  # manuelle Auslösung
+    - cron: '6 6 * * 6'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -19,14 +19,23 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
-    - name: Login to GitHub Container Registry
+    - name: Log in to GHCR
       uses: docker/login-action@v2
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Build and Push Docker image
+    - name: Set image tag
+      id: vars
       run: |
-        chmod +x smart-build.sh
-        ./smart-build.sh
+        TAG=$(date +'%Y%m%d%H%M')
+        echo "TAG=$TAG" >> $GITHUB_ENV
+        echo "Image tag will be: $TAG"
+
+    - name: Build and push Docker image
+      run: |
+        docker build -t ghcr.io/${{ github.repository_owner }}/apt-cacher-ng:${{ env.TAG }} .
+        docker tag ghcr.io/${{ github.repository_owner }}/apt-cacher-ng:${{ env.TAG }} ghcr.io/${{ github.repository_owner }}/apt-cacher-ng:latest
+        docker push ghcr.io/${{ github.repository_owner }}/apt-cacher-ng:${{ env.TAG }}
+        docker push ghcr.io/${{ github.repository_owner }}/apt-cacher-ng:latest
