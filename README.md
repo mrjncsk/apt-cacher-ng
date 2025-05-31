@@ -24,6 +24,6 @@ services:
       - ./apt-cache:/var/cache/apt-cacher-ng
     restart: unless-stopped
 ```
-## Apt Cacher Infos
+## Infos
 - https://www.unix-ag.uni-kl.de/~bloch/acng/
 - https://wiki.debian.org/AptCacherNg
